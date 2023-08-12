@@ -1,0 +1,56 @@
+name: Continuous Integration and Deployment
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  build_and_test:
+    name: Install Node and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Start Hosting
+        run: npm start & npx wait-on http://127.0.0.1:3000
+
+      - name: Run Unit Tests
+        run: npm test
+
+      - name: Run End to End Tests
+        run: npx cypress run
+
+  deploy:
+    needs: build_and_test
+    permissions:
+      contents: "read"
+      id-token: "write"
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Google Auth
+        id: auth
+        uses: "google-github-actions/auth@v0"
+        with:
+          token_format: "access_token"
+          workload_identity_provider: "${{ secrets.WIF_PROVIDER }}"
+          service_account: "${{ secrets.WIF_SERVICE_ACCOUNT }}"
+
+      - name: Deploy
+        uses: "google-github-actions/deploy-appengine@v1"
