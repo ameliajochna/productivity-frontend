@@ -1,4 +1,4 @@
-/*! For license information please see main.adeddae1.js.LICENSE.txt */
+/*! For license information please see main.b8d1c173.js.LICENSE.txt */
 !(function () {
   var e = {
       4569: function (e, t, n) {
@@ -19703,7 +19703,6 @@
           return (
             (0, e.useEffect)(
               function () {
-                console.log("USER"), console.log(r);
                 var e = (function () {
                   var e = c(
                     l().mark(function e() {
@@ -23485,7 +23484,6 @@
                       switch ((e.prev = e.next)) {
                         case 0:
                           (t = x),
-                            console.log(h, t, y),
                             i
                               .createUserApiUsersPost({
                                 email: h,
@@ -23504,20 +23502,15 @@
                                       company_id: n,
                                       user_email: r,
                                     })
-                                      .then(function (e) {
-                                        console.log(e);
-                                      })
-                                      .catch(function (e) {
-                                        console.log(e.response.data.detail);
-                                      });
+                                      .then(function (e) {})
+                                      .catch(function (e) {});
                                   }
                                 }
                               })
                               .catch(function (e) {
-                                j(e.response.data.detail),
-                                  console.log(e.response.data.detail);
+                                j(e.response.data.detail);
                               });
-                        case 3:
+                        case 2:
                         case "end":
                           return e.stop();
                       }
@@ -23545,9 +23538,7 @@
                             .then(function (e) {
                               G(e.data), V(e.data);
                             })
-                            .catch(function (e) {
-                              console.log(e.response.data.detail);
-                            });
+                            .catch(function (e) {});
                         case 1:
                         case "end":
                           return e.stop();
@@ -23803,11 +23794,10 @@
                           e.preventDefault();
                           var t = ["", "", "", "", ""],
                             n = !1;
-                          if (
-                            (_ ||
-                              ((n = !0),
-                              (t[3] =
-                                "You must agree to our terms and conditions to create an account. Please check this box.")),
+                          _ ||
+                            ((n = !0),
+                            (t[3] =
+                              "You must agree to our terms and conditions to create an account. Please check this box.")),
                             x.length < 8 &&
                               ((n = !0),
                               (t[2] = "Please enter at least 8 characters.")),
@@ -23819,16 +23809,14 @@
                               ((n = !0), (t[1] = "Please enter your email.")),
                             0 === y.length &&
                               ((n = !0), (t[0] = "Please enter your name.")),
-                            "" !== ne)
-                          ) {
-                            var r = W.filter(function (e) {
-                              return e.name === ne;
-                            });
-                            console.log(r),
-                              0 === r.length &&
-                                (t[4] = "There is no such company registered.");
-                          }
-                          j(t), n || z();
+                            "" !== ne &&
+                              0 ===
+                                W.filter(function (e) {
+                                  return e.name === ne;
+                                }).length &&
+                              (t[4] = "There is no such company registered."),
+                            j(t),
+                            n || z();
                         })(e);
                       },
                       children: [
@@ -23902,15 +23890,14 @@
                     for (;;)
                       switch ((e.prev = e.next)) {
                         case 0:
-                          console.log("submit"),
-                            E.generateTokenApiTokenPost("company", i, p)
-                              .then(function (e) {
-                                w(e.data);
-                              })
-                              .catch(function (e) {
-                                y(e.response.data.detail);
-                              });
-                        case 2:
+                          E.generateTokenApiTokenPost("company", i, p)
+                            .then(function (e) {
+                              w(e.data);
+                            })
+                            .catch(function (e) {
+                              y(e.response.data.detail);
+                            });
+                        case 1:
                         case "end":
                           return e.stop();
                       }
@@ -24090,7 +24077,7 @@
                               name: p,
                             })
                               .then(function (e) {
-                                console.log(e.data), E(e.data);
+                                E(e.data);
                               })
                               .catch(function (e) {
                                 _(["", "", "", e.response.data.detail]);
@@ -24624,9 +24611,7 @@
                                 description: k,
                                 priority: E,
                               })
-                              .then(function (e) {
-                                console.log(e);
-                              })
+                              .then(function (e) {})
                               .catch(function (e) {
                                 o("Something went wrong while adding a task");
                               });
@@ -24855,7 +24840,6 @@
                       case 0:
                         (t = k),
                           (n = E),
-                          console.log(u),
                           i
                             .updatePasswordApiUsersUserIdPut(u, {
                               email: m,
@@ -24869,7 +24853,7 @@
                             .catch(function (e) {
                               N(e.response.data.detail);
                             });
-                      case 4:
+                      case 3:
                       case "end":
                         return e.stop();
                     }
@@ -25251,9 +25235,7 @@
                                   .then(function (e) {
                                     c(e.data.response);
                                   })
-                                  .catch(function (e) {
-                                    console.log(e);
-                                  });
+                                  .catch(function (e) {});
                             },
                           }),
                         ],
@@ -25269,8 +25251,8 @@
                   children: "Need some help? Ask ChatGPT",
                 }),
           });
-        },
-        hr = function () {
+        };
+      var hr = function () {
           var t = a((0, e.useContext)(Q), 1)[0],
             n = a((0, e.useState)(!1), 2),
             r = n[0],
@@ -25363,26 +25345,33 @@
             N = j[0],
             T = j[1],
             P = function (e) {
-              m(e);
-              var t,
-                n = he(e),
-                r = n.filter(function (e) {
+              console.log(e), m(e);
+              var t = he(e),
+                n = t.filter(function (e) {
                   return "To do" === e.state;
                 }),
-                o = n.filter(function (e) {
+                r = t.filter(function (e) {
                   return "In progress" === e.state;
                 }),
-                i = n.filter(function (e) {
+                o = t.filter(function (e) {
                   return "Done" === e.state;
                 });
-              T([
-                { title: "To do", items: r },
-                { title: "In progress", items: o },
-                { title: "Done", items: i },
-              ]),
-                (t =
-                  0 === n.length ? 0 : Math.round((i.length / n.length) * 100)),
-                u(t);
+              T(
+                (function (e, t, n) {
+                  return [
+                    { title: "To do", items: e },
+                    { title: "In progress", items: t },
+                    { title: "Done", items: n },
+                  ];
+                })(n, r, o),
+              ),
+                console.log(n, r, o),
+                u(
+                  (function (e, t, n) {
+                    var r = e.length + t.length + n.length;
+                    return 0 === r ? 0 : Math.round((n.length / r) * 100);
+                  })(n, r, o),
+                );
             },
             O = a((0, e.useState)(!1), 2),
             L = O[0],
@@ -25431,9 +25420,7 @@
                               description: o,
                               priority: i,
                             })
-                              .then(function (e) {
-                                console.log(e);
-                              })
+                              .then(function (e) {})
                               .catch(function () {
                                 d("Couldn't update");
                               });
@@ -26111,27 +26098,20 @@
               function () {
                 if (null !== l) {
                   var e = he(l),
-                    t = [
-                      {
-                        title: "To do",
-                        items: e.filter(function (e) {
-                          return "To do" === e.state;
-                        }),
-                      },
-                      {
-                        title: "In progress",
-                        items: e.filter(function (e) {
-                          return "In progress" === e.state;
-                        }),
-                      },
-                      {
-                        title: "Done",
-                        items: e.filter(function (e) {
-                          return "Done" === e.state;
-                        }),
-                      },
-                    ];
-                  p(t), console.log(t);
+                    t = e.filter(function (e) {
+                      return "To do" === e.state;
+                    }),
+                    n = e.filter(function (e) {
+                      return "In progress" === e.state;
+                    }),
+                    r = e.filter(function (e) {
+                      return "Done" === e.state;
+                    });
+                  p([
+                    { title: "To do", items: t },
+                    { title: "In progress", items: n },
+                    { title: "Done", items: r },
+                  ]);
                 }
               },
               [l],
@@ -26333,91 +26313,90 @@
             j = C[0],
             N = C[1];
           return (0, f.jsx)(f.Fragment, {
-            children:
-              d && n && b.length > 0
-                ? (0, f.jsxs)(f.Fragment, {
-                    children: [
-                      (0, f.jsx)("div", {
-                        className: "table-background",
-                        children: (0, f.jsx)("div", {
-                          className: "page-middle",
-                          children:
-                            null !== j
-                              ? (0, f.jsx)(br, {
-                                  tasks: n,
-                                  ind: j,
-                                  setSingleUser: N,
-                                  name: n[j].name,
-                                })
-                              : n.map(function (e, t) {
-                                  return (0, f.jsx)(
-                                    $n,
-                                    {
-                                      placement: "top",
-                                      overlay: (0, f.jsx)("span", {
-                                        children: "Click to see more details",
-                                      }),
-                                      overlayClassName: "custom-tooltip",
-                                      children: (0, f.jsxs)(
-                                        "div",
-                                        {
-                                          className: "employee-grid-element",
-                                          onClick: function () {
-                                            return (function (e) {
-                                              N(e);
-                                            })(t);
-                                          },
-                                          children: [
-                                            (0, f.jsx)("div", {
-                                              className: "name-block",
-                                              children:
-                                                "" === e.name
-                                                  ? "Your employee"
-                                                  : e.name,
-                                            }),
-                                            (0, f.jsxs)("div", {
-                                              className: "tasks-block",
-                                              children: [
-                                                (0, f.jsx)(wr, {
-                                                  name: "To do",
-                                                  id: "todo",
-                                                  stats: b[t][0],
-                                                }),
-                                                (0, f.jsx)(wr, {
-                                                  name: "In progress",
-                                                  id: "inprogress",
-                                                  stats: b[t][1],
-                                                }),
-                                                (0, f.jsx)(wr, {
-                                                  name: "Done",
-                                                  id: "done",
-                                                  stats: b[t][2],
-                                                }),
-                                              ],
-                                            }),
-                                          ],
+            children: d
+              ? (0, f.jsxs)(f.Fragment, {
+                  children: [
+                    (0, f.jsx)("div", {
+                      className: "table-background",
+                      children: (0, f.jsx)("div", {
+                        className: "page-middle",
+                        children:
+                          null !== j
+                            ? (0, f.jsx)(br, {
+                                tasks: n,
+                                ind: j,
+                                setSingleUser: N,
+                                name: n[j].name,
+                              })
+                            : n.map(function (e, t) {
+                                return (0, f.jsx)(
+                                  $n,
+                                  {
+                                    placement: "top",
+                                    overlay: (0, f.jsx)("span", {
+                                      children: "Click to see more details",
+                                    }),
+                                    overlayClassName: "custom-tooltip",
+                                    children: (0, f.jsxs)(
+                                      "div",
+                                      {
+                                        className: "employee-grid-element",
+                                        onClick: function () {
+                                          return (function (e) {
+                                            N(e);
+                                          })(t);
                                         },
-                                        t,
-                                      ),
-                                    },
-                                    t,
-                                  );
-                                }),
-                        }),
+                                        children: [
+                                          (0, f.jsx)("div", {
+                                            className: "name-block",
+                                            children:
+                                              "" === e.name
+                                                ? "Your employee"
+                                                : e.name,
+                                          }),
+                                          (0, f.jsxs)("div", {
+                                            className: "tasks-block",
+                                            children: [
+                                              (0, f.jsx)(wr, {
+                                                name: "To do",
+                                                id: "todo",
+                                                stats: b[t][0],
+                                              }),
+                                              (0, f.jsx)(wr, {
+                                                name: "In progress",
+                                                id: "inprogress",
+                                                stats: b[t][1],
+                                              }),
+                                              (0, f.jsx)(wr, {
+                                                name: "Done",
+                                                id: "done",
+                                                stats: b[t][2],
+                                              }),
+                                            ],
+                                          }),
+                                        ],
+                                      },
+                                      t,
+                                    ),
+                                  },
+                                  t,
+                                );
+                              }),
                       }),
-                      (0, f.jsx)(cr, {
-                        title: "My employees",
-                        mode: "company",
-                        searchName: E,
-                        setSearch: S,
-                      }),
-                      (0, f.jsx)(ar, {
-                        percent: k,
-                        setMyProfile: function () {},
-                      }),
-                    ],
-                  })
-                : (0, f.jsx)(f.Fragment, {}),
+                    }),
+                    (0, f.jsx)(cr, {
+                      title: "My employees",
+                      mode: "company",
+                      searchName: E,
+                      setSearch: S,
+                    }),
+                    (0, f.jsx)(ar, {
+                      percent: k,
+                      setMyProfile: function () {},
+                    }),
+                  ],
+                })
+              : (0, f.jsx)(f.Fragment, {}),
           });
         },
         kr = function () {
@@ -26436,4 +26415,4 @@
       );
     })();
 })();
-//# sourceMappingURL=main.adeddae1.js.map
+//# sourceMappingURL=main.b8d1c173.js.map
