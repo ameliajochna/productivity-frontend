@@ -24,8 +24,6 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-require("@4tw/cypress-drag-drop");
-
 Cypress.Commands.add("login", (email, password) => {
   cy.get('input[name="email"]').type(email, { force: true });
   cy.get('input[name="email"]').should("have.value", email);
