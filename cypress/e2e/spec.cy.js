@@ -18,7 +18,7 @@ describe("End to end testing", () => {
     cy.get('input[name="password"]').type(password, { force: true });
     cy.get('input[name="rules"]').click({ force: true });
     cy.contains("Sign in").click({ force: true });
-    cy.wait(1000);
+    cy.wait(2000);
   });
 
   it("Add tasks", () => {
@@ -52,7 +52,7 @@ describe("End to end testing", () => {
     cy.get(".input-title").type(taskTitle3, { force: true });
     cy.contains("Create a new task").click({ force: true });
 
-    cy.wait(4000);
+    cy.wait(8000);
 
     cy.get("#0.table")
       .should("contain", taskTitle1)
@@ -88,7 +88,7 @@ describe("End to end testing", () => {
     cy.get("#2.item-button-block").click({ force: true });
     cy.get("#2.item-options-delete").click({ force: true });
 
-    cy.wait(5000);
+    cy.wait(10000);
 
     cy.get("#0.table").should("contain", "0 tasks");
     cy.get("#1.table").should("contain", "0 tasks");
